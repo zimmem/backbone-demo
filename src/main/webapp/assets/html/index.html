@@ -1,118 +1,65 @@
 <!doctype html>
 <html>
 <head>
-<link href="/assets/lib/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/lib/bootstrap-material-design/material-wfont.min.css" rel="styleshe et">
+<link href="/assets/lib/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- <link href="/assets/lib/bootstrap-material-design/material-wfont.min.css" rel="styleshe et">
 <link href="http://fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="styleshe et">
-<link href="/assets/lib/bootstrap-material-design/ripples.min.css" rel="stylesheet">
+<link href="/assets/lib/bootstrap-material-design/ripples.min.css" rel="stylesheet"> -->
 </head>
 <body>
-    <div class="container well bs-component" style="width: 800px; margin: auto;">
-        <form class="form-horizontal">
-            <fieldset>
-                <legend>Legend</legend>
-                <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                    <div class="col-lg-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                    <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        <div class="checkbox">
-                            <label> <input type="checkbox"> Checkbox
-                            </label>
-                        </div>
-                        <br>
-                        <div class="togglebutton">
-                            <label> <input type="checkbox" checked=""> Toggle button
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputFile" class="col-lg-2 control-label">File</label>
-                    <div class="col-lg-10">
-                        <input type="text" readonly="" class="form-control floating-label" placeholder="Browse...">
-                        <input type="file" id="inputFile" multiple="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-                    <div class="col-lg-10">
-                        <textarea class="form-control" rows="3" id="textArea"></textarea>
-                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Radios</label>
-                    <div class="col-lg-10">
-                        <div class="radio radio-primary">
-                            <label> <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""> Option one is this
-                            </label>
-                        </div>
-                        <div class="radio radio-primary">
-                            <label> <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Option two can be something else
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="select" class="col-lg-2 control-label">Selects</label>
-                    <div class="col-lg-10">
-                        <select class="form-control" id="select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select> <br> <select multiple="" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
-    </div>
+	<div class="container" style="width: 960px; margin: auto;">
+		<!-- <form class="form-horizontal" role="form">
+			<div class="form-group">
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputSuccess3">
+				</div>
+				<button class="btn btn-primary">search</button>
+			</div>
+		</form> -->
+		<button class="btn btn-primary" id="create-btn" data-toggle="modal"
+			data-target="#todo-dialog">Create</button>
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>content</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody id="todo-list">
+			</tbody>
+		</table>
+	</div>
 
-    <script src="/assets/lib/jquery/2.1.1/jquery-2.1.1.min.js"></script>
-    <script src="/assets/lib/bootstrap-material-design/material.min.js"></script>
-    <script src="/assets/lib/bootstrap-material-design/ripples.min.js"></script>
-    <script src="http://fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
-    <script>
-					$(function() {
-						$.material.init();
-						$(".shor").noUiSlider({
-							start : 40,
-							connect : "lower",
-							range : {
-								min : 0,
-								max : 100
-							}
-						});
-
-						$(".svert").noUiSlider({
-							orientation : "vertical",
-							start : 40,
-							connect : "lower",
-							range : {
-								min : 0,
-								max : 100
-							}
-						});
-					});
-				</script>
+	<div class="modal fade" id="todo-dialog" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">Create Todo</h4>
+					</div>
+					<div class="modal-body">
+						<input name="content" id="content-input" class="form-controll"></input>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id="add-btn">Save
+							changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="/assets/lib/jquery/2.1.1/jquery-2.1.1.min.js"></script>
+	<script src="/assets/lib/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="/assets/lib/underscore/1.7.0/underscore-min.js"></script>
+	<script src="/assets/lib/backbone/1.1.2/backbone-min.js"></script>
+	<script src="/assets/lib/artTemplate/template.js"></script>
+	<script src="/assets/js/todo.js"></script>
 </body>
 </html>
